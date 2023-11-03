@@ -1,0 +1,25 @@
+<div class="container" (click)="divClick()">
+  <div class="badWords-block">
+    <span class="badWords-title">Bad words: </span>
+    <span id="badWords"> {{ badWords }}</span>
+  </div>
+  <div class="inpAndBtns">
+    <input
+      type="text"
+      [(ngModel)]="badWord"
+      id="inputWords"
+      [ngClass]="{ redBorder: isRedInput }"
+    />
+    <button id="addBtn" (click)="add($event)">Add</button>
+    <button id="resetBtn" (click)="reset()">Reset</button>
+  </div>
+
+  <textarea
+    id="textarea"
+    [(ngModel)]="textAreaContent"
+    [ngClass]="{ redBorder: isRedArea }"
+  >
+ {{ textAreaContent }} </textarea
+  >
+  <button id="btn-cenzor" (click)="cenzor($event)">Cenzor</button>
+</div>

@@ -1,0 +1,48 @@
+<div id="wrapper">
+  <h1>Plan your day</h1>
+  <h2>User: Ivan Ivanenko. Count of tasks {{ allTasks.length }}</h2>
+  <hr />
+  <form id="formBlock">
+    <input [(ngModel)]="newTaskName" type="text" name="input" id="inputField" />
+    <input *ngIf="!editStatus" type="button" id="addButton" value="add" (click)="addTask()" />
+    <input *ngIf="editStatus" type="button" id="editButton" value="edit" (click)="editTask()" />
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Task</th>
+        <th>Check</th>
+        <th>DONE/IN PROGRESS</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of allTasks; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ task.taskName }}</td>
+        <td>
+          <input
+            type="checkbox"
+           [(ngModel)]="task.taskStatus"  
+          />
+        </td>
+        <td>
+          <span *ngIf="task.taskStatus; else inProgressText" class="done"
+            >Done</span
+          >
+          <ng-template #inProgressText>
+            <span class="inProgress">In Progress</span>
+          </ng-template>
+        </td>
+        <td>
+          <app-edit-btn [index]="i" (editTask)="getIndexForEdit($event)"></app-edit-btn>
+        </td>
+        <td>
+          <app-delete-btn [disabled]="editStatus" [index]="i" (delTask)="getIndexForDelete($event)"></app-delete-btn>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
