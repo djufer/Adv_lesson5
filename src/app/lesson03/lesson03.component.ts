@@ -35,7 +35,6 @@ export class Lesson03Component {
       this.allTasks.push(newTask);
       this.newTaskName = '';
     } else {
-      // setTimeout is for ending button animation
       setTimeout(() => alert('Write your task, please'), 0);
     }
   }
@@ -53,5 +52,5 @@ export class Lesson03Component {
     this.editStatus = !this.editStatus;
     this.newTaskName = '';
     }
-    
+  
 }

@@ -10,6 +10,10 @@ import { Lesson02Component } from './lesson02/lesson02.component';
 import { Lesson03Component } from './lesson03/lesson03.component';
 import { EditBtnComponent } from './lesson03/edit-btn/edit-btn.component';
 import { DeleteBtnComponent } from './lesson03/delete-btn/delete-btn.component';
+import { Lesson04Component } from './lesson04/lesson04.component';
+import { SearchPipe } from './lesson04/search.pipe';
+import { EditContactBtnComponent } from './lesson04/edit-contact-btn/edit-contact-btn.component';
+import { SortPipe } from './lesson04/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,13 @@ import { DeleteBtnComponent } from './lesson03/delete-btn/delete-btn.component';
     Lesson02Component,
     Lesson03Component,
     EditBtnComponent,
-    DeleteBtnComponent
+    DeleteBtnComponent,
+    Lesson04Component,
+    SearchPipe,
+    EditContactBtnComponent,
+    SortPipe,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

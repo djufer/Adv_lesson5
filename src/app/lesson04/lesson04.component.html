@@ -1,0 +1,141 @@
+<div id="wrapper">
+  <h1>My phone book</h1>
+  <hr />
+  <form id="formBlock">
+    <input type="text" name="input" id="inputField" [(ngModel)]="field" />
+    <input
+      type="button"
+      value="add phone"
+      id="openModalBtn"
+      (click)="openModalBtn()"
+    />
+  </form>
+  <table>
+    <thead class="tableHover">
+      <tr>
+        <th id="firstName" (click)="sortClick($event, 'firstName')" class="animated">
+          First name
+          <span
+            *ngIf="
+            sortColumn === 'firstName' &&
+            sortDirection === 'asc'
+            "
+            class="sort-asc"
+          ></span>
+          <span
+            *ngIf="
+            sortColumn === 'firstName' &&
+            sortDirection === 'desc'
+            "
+            class="sort-desc"
+          ></span>
+        </th>
+        <th id="lastName" class="animated" (click)="sortClick($event, 'lastName')">Last name
+        <span
+            *ngIf="
+            sortColumn === 'lastName' &&
+            sortDirection === 'asc'
+            "
+            class="sort-asc"
+          ></span>
+          <span
+            *ngIf="
+            sortColumn === 'lastName' &&
+            sortDirection === 'desc'
+            "
+            class="sort-desc"
+          ></span>
+        </th>
+        <th id="number" class="animated" (click)="sortClick($event, 'number')">Number
+        <span
+            *ngIf="
+            sortColumn === 'number' &&
+            sortDirection === 'asc'
+            "
+            class="sort-asc"
+          ></span>
+          <span
+            *ngIf="
+            sortColumn === 'number' &&
+            sortDirection === 'desc'
+            "
+            class="sort-desc"
+          ></span>
+        </th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let contact of allContacts
+            | search : field
+            | sort : { key: 'firstName', order: sortDirection };
+          index as i
+        "
+      >
+        <td>{{ contact.firstName }}</td>
+        <td>{{ contact.lastName }}</td>
+        <td>{{ contact.number }}</td>
+        <td>
+          <app-edit-contact-btn
+            [index]="i"
+            (editPhone)="getIndexForEdit($event)"
+          ></app-edit-contact-btn>
+        </td>
+        <td>
+          <app-delete-btn
+            [index]="i"
+            (delTask)="getIndexForDelete($event)"
+          ></app-delete-btn>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="modalWrapper" *ngIf="openModal" (click)="sideClickCloseModal($event)">
+  <div id="modalContainer">
+    <h2>Add phone</h2>
+    <div class="close-button" (click)="closeModalButton()"></div>
+    <hr />
+    <form>
+      <input
+        type="text"
+        name="fName"
+        placeholder="first name goes here"
+        placeholder="first name goes here"
+        [(ngModel)]="inpFirstName"
+      />
+      <input
+        type="text"
+        name="lName"
+        placeholder="last name goes here"
+        [(ngModel)]="inpLastName"
+      />
+      <input
+        type="text"
+        name="number"
+        placeholder="number phone goes here"
+        [(ngModel)]="inpPhoneNumber"
+      />
+    </form>
+    <hr />
+    <button
+      *ngIf="!editStatus"
+      class="submitModalButton"
+      type="submit"
+      (click)="addPhone()"
+    >
+      Save
+    </button>
+    <button
+      *ngIf="editStatus"
+      class="submitModalButton"
+      type="submit"
+      (click)="editContact()"
+    >
+      Edit
+    </button>
+  </div>
+</div>

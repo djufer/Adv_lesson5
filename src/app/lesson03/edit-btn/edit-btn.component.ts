@@ -2,10 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-edit-btn',
-  template: ` <button 
-    (click)="sendIndex()"
-    
-  >Edit</button> `,
+  template: `
+    <button (click)="sendIndex()">Edit</button>
+  `,
   styles: [
     `
       button {
@@ -14,7 +13,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         border-radius: 3px;
         background-color: yellow;
       }
-     
     `,
   ],
 })
