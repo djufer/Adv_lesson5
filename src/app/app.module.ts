@@ -14,6 +14,10 @@ import { Lesson04Component } from './lesson04/lesson04.component';
 import { SearchPipe } from './lesson04/search.pipe';
 import { EditContactBtnComponent } from './lesson04/edit-contact-btn/edit-contact-btn.component';
 import { SortPipe } from './lesson04/sort.pipe';
+import { Lesson05Component } from './lesson05/lesson05.component';
+import { HeaderComponent } from './lesson05/header/header.component';
+import { HomeComponent } from './lesson05/home/home.component';
+import { WorksComponent } from './lesson05/works/works.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,10 @@ import { SortPipe } from './lesson04/sort.pipe';
     SearchPipe,
     EditContactBtnComponent,
     SortPipe,
+    Lesson05Component,
+    HeaderComponent,
+    HomeComponent,
+    WorksComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

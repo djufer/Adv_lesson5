@@ -1,0 +1,17 @@
+<header class="head-works">
+    <div class="last-works">Last works>>></div>
+    <div routerLinkActive="opened" class="cenzor-container block">
+        
+        <a [routerLink]="[ 'cenzor' ]"  class="cenzor-btn">Cenzor</a>
+    </div>
+    <div routerLinkActive="opened" class="users-container block">
+        <a [routerLink]="[ 'users' ]" class="users-btn">Users</a>
+    </div>
+    <div routerLinkActive="opened" class="task-container block">
+        <a [routerLink]="[ 'tasks' ]" class="task-btn">Task</a>
+    </div>
+    <div class="back-to-container block">
+        <a [routerLink]="[ '/' ]" class="back-to-btn"> Back to >>> Home</a>
+    </div>
+</header>
+<router-outlet></router-outlet>
